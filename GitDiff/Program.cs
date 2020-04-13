@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace GitDiff
 {
@@ -6,7 +7,16 @@ namespace GitDiff
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            UserInput input = new UserInput();
+            CommandParse commandParse = new CommandParse();
+            bool flag = false;
+
+            Setup.Start();
+            while (flag == false)
+            {
+                string command = input.In();
+                commandParse.parse(command);
+            }
         }
     }
 }
