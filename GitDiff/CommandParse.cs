@@ -25,7 +25,8 @@ namespace GitDiff
             {
                 try
                 {
-                    FileRead.Read(words[1], words[2]);
+                    List<List<string>> contents = FileRead.Read(words[1], words[2]);
+                    Diff.Difference(contents);
                 }
                 catch (IndexOutOfRangeException)
                 {
@@ -36,6 +37,10 @@ namespace GitDiff
             {
                 Console.WriteLine("Exiting the console...");
                 Environment.Exit(0);
+            }
+            else if (words[0] == "" || words[0] == " ")
+            {
+                Console.WriteLine("");
             }
             else
             {
