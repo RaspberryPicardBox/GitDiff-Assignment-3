@@ -10,9 +10,9 @@ namespace GitDiff
         {
             Console.WriteLine($"'{command}' is an unknown command. Please use 'help'.");
         }
-        public static void unknownArgument(string command, int args)
+        public static void unknownArgument(string command)
         {
-            Console.WriteLine($"{command} takes more than {args} arguments. Please use 'help'.");
+            Console.WriteLine($"{command} takes arguments. Please use 'help'.");
         }
     }
 }

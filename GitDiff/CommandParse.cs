@@ -12,15 +12,30 @@ namespace GitDiff
 
             if (words[0] == "help")
             {
-                HelpCommand.help(words[0]);
+                try
+                {
+                    HelpCommand.help(words[1]);
+                }
+                catch (IndexOutOfRangeException)
+                {
+                    HelpCommand.help(words[0]);
+                }
             }
             else if (words[0] == "diff")
             {
-                Console.WriteLine("Not Implemented.");
+                try
+                {
+                    FileRead.Read(words[1], words[2]);
+                }
+                catch (IndexOutOfRangeException)
+                {
+                    UnknownCommand.unknownArgument("diff");
+                }
             }
             else if (words[0] == "quit")
             {
-                Console.WriteLine("QUIT");
+                Console.WriteLine("Exiting the console...");
+                Environment.Exit(0);
             }
             else
             {

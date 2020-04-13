@@ -9,10 +9,9 @@ namespace GitDiff
         {
             UserInput input = new UserInput();
             CommandParse commandParse = new CommandParse();
-            bool flag = false;
 
             Setup.Start();
-            while (flag == false)
+            while (true)
             {
                 string command = input.In();
                 commandParse.parse(command);
