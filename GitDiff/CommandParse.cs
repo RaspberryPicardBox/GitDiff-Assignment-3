@@ -25,7 +25,7 @@ namespace GitDiff
             {
                 try
                 {
-                    List<List<string>> contents = FileRead.Read(words[1], words[2]);
+                    List<List<string[]>> contents = FileRead.Read(words[1], words[2]);
                     Diff.Difference(contents);
                 }
                 catch (IndexOutOfRangeException)

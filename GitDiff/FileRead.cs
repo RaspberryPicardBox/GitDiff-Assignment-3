@@ -6,16 +6,16 @@ namespace GitDiff
 {
     class FileRead
     {
-        public static List<List<string>> Read(string fileOne, string fileTwo)
+        public static List<List<string[]>> Read(string fileOne, string fileTwo)
         {
             if (fileOne.Contains(".txt") && fileTwo.Contains(".txt"))
             {
-                List<string> contentsOne = new List<string>();
-                List<string> contentsTwo = new List<string>();
-                List<List<string>> contentsAll = new List<List<string>>();
+                List<string[]> contentsOne = new List<string[]>();
+                List<string[]> contentsTwo = new List<string[]>();
+                List<List<string[]>> contentsAll = new List<List<string[]>>();
                 try
                 {
-                    string contentsFileOne = System.IO.File.ReadAllText($@"../../../../Files/{fileOne}");
+                    string[] contentsFileOne = System.IO.File.ReadAllLines($@"../../../../Files/{fileOne}");
                     contentsOne.Add(contentsFileOne);
                 }
                 catch (Exception)
@@ -25,7 +25,7 @@ namespace GitDiff
                 }
                 try
                 {
-                    string contentsFileTwo = System.IO.File.ReadAllText($@"../../../../Files/{fileTwo}");
+                    string[] contentsFileTwo = System.IO.File.ReadAllLines($@"../../../../Files/{fileTwo}");
                     contentsTwo.Add(contentsFileTwo);
                 }
                 catch (Exception)
