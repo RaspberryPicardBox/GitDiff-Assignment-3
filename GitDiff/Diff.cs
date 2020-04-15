@@ -8,7 +8,7 @@ namespace GitDiff
     {
         public static void Difference(List<List<string[]>> fileContents)
         {
-            List<char> differences = new List<char>();
+            List<Differences> differences = new List<Differences>();
 
             List<string[]> One = fileContents[0];
             List<string[]> Two = fileContents[1];
@@ -17,7 +17,7 @@ namespace GitDiff
             int indexWord = 0;
             int indexChar = 0;
 
-            foreach (string[] line in One)
+            foreach (string[] line in Two)
             {
                 foreach (string word in line)
                 {
@@ -25,10 +25,8 @@ namespace GitDiff
                     {
                         if (character != Two[indexLine][indexWord][indexChar])
                         {
-                            differences.Add(Two[indexLine][indexWord][indexChar]);
-                            //Make an object called "difference" with these ^^^ three as paramaters
-                            //and then add each object to a list. Can then call on each paramater later as output.
-                            //Similar to EUCalc.
+                            Differences difference = new Differences(character.ToString(), indexLine, indexWord, indexChar);
+                            differences.Add(difference);
                         }
                         indexChar++;
                     }
