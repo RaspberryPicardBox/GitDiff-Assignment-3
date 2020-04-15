@@ -9,30 +9,69 @@ namespace GitDiff
         public static void Difference(List<List<string[]>> fileContents)
         {
             List<Differences> differences = new List<Differences>();
-
-            List<string[]> One = fileContents[0];
-            List<string[]> Two = fileContents[1];
+            List<string[]> One = new List<string[]>();
+            List<string[]> Two = new List<string[]>();
+            if (fileContents.Count > 0)
+            {
+                One = fileContents[0];
+                Two = fileContents[1];
+            }
+            else
+            {
+                
+            }
 
             int indexLine = 0;
             int indexWord = 0;
             int indexChar = 0;
 
-            foreach (string[] line in Two)
+            int lenOne = One[0][0].Length;
+            int lenTwo = Two[0][0].Length;
+
+            if (lenOne >= lenTwo)
             {
-                foreach (string word in line)
+                foreach (string[] line in One)
                 {
-                    foreach (char character in word)
+                    foreach (string word in line)
                     {
-                        if (character != Two[indexLine][indexWord][indexChar])
+                        foreach (char character in word)
                         {
-                            Differences difference = new Differences(character.ToString(), indexLine, indexWord, indexChar);
-                            differences.Add(difference);
+                            if (character != Two[indexLine][indexWord][indexChar])
+                            {
+                                Differences difference = new Differences(character.ToString(), indexLine, indexWord, indexChar);
+                                differences.Add(difference);
+                            }
+                            indexChar++;
                         }
-                        indexChar++;
+                        indexWord++;
                     }
-                    indexWord++;
+                    indexLine++;
                 }
-                indexLine++;
+            }
+            else if (lenTwo > lenOne)
+            {
+                foreach (string[] line in Two)
+                {
+                    foreach (string word in line)
+                    {
+                        foreach (char character in word)
+                        {
+                            if (character != One[indexLine][indexWord][indexChar])
+                            {
+                                Differences difference = new Differences(character.ToString(), indexLine, indexWord, indexChar);
+                                differences.Add(difference);
+                            }
+                            indexChar++;
+                        }
+                        indexWord++;
+                    }
+                    indexLine++;
+                }
+            }
+
+            foreach (Differences difference in differences)
+            {
+                Console.WriteLine($"Difference: {difference}");
             }
         }
     }

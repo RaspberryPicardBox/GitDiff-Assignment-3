@@ -23,15 +23,20 @@ namespace GitDiff
             }
             else if (words[0] == "diff")
             {
+                List<List<string[]>> contents = new List<List<string[]>>();
                 try
                 {
-                    List<List<string[]>> contents = FileRead.Read(words[1], words[2]);
-                    Diff.Difference(contents);
+                    contents = FileRead.Read(words[1], words[2]);
                 }
                 catch (IndexOutOfRangeException)
                 {
                     UnknownCommand.unknownArgument("diff");
                 }
+                catch (NullReferenceException)
+                {
+                    UnknownCommand.errorArgument("diff");
+                }
+                Diff.Difference(contents);
             }
             else if (words[0] == "quit")
             {

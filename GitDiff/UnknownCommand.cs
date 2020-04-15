@@ -14,5 +14,12 @@ namespace GitDiff
         {
             Console.WriteLine($"{command} takes arguments. Please use 'help'.");
         }
+        public static void errorArgument(string command)
+        {
+            if (command == "diff")
+            {
+                Console.WriteLine("Diff takes text files as arguments. Please use 'help'.");
+            }
+        }
     }
 }
