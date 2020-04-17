@@ -38,6 +38,23 @@ namespace GitDiff
                 }
                 Diff.Difference(contents);
             }
+            else if (words[0] == "debug")
+            {
+                List<List<string[]>> contents = new List<List<string[]>>();
+                try
+                {
+                    contents = FileRead.Read("test1.txt", "test2.txt");
+                }
+                catch (IndexOutOfRangeException)
+                {
+                    UnknownCommand.unknownArgument("diff");
+                }
+                catch (NullReferenceException)
+                {
+                    UnknownCommand.errorArgument("diff");
+                }
+                Diff.Difference(contents);
+            }
             else if (words[0] == "quit")
             {
                 Console.WriteLine("Exiting the console...");
