@@ -69,6 +69,17 @@ namespace GitDiff
                 IEnumerable<string> differencesTwo = linesTwo[i].Except(linesOne[i]);
                 IEnumerable<string> differencesOne = linesOne[i].Except(linesTwo[i]);
 
+                Console.WriteLine($"Differences One: \n \n");
+                foreach (string word in differencesOne)
+                {
+                    Console.WriteLine(word);
+                }
+                Console.WriteLine($"\n\nDifferences Two: \n \n");
+                foreach (string word in differencesTwo)
+                {
+                    Console.WriteLine(word);
+                }
+
                 for (int j = 0; j < linesOne[i].Count; j += 1)
                 {
                     if (differencesOne.Contains(linesOne[i][j]))
@@ -83,10 +94,34 @@ namespace GitDiff
                     }
                     else
                     {
-                        Console.ForegroundColor = ConsoleColor.White;
-                        Console.Write($"{linesOne[i][j]} ");
+                        if (i < linesTwo[i][j].Count())
+                        {
+                            if (linesOne[i][j] != linesTwo[i][j])
+                            {
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.Write($"-{linesOne[i][j]} ");
+                            }
+                            else
+                            {
+                                Console.ForegroundColor = ConsoleColor.White;
+                                Console.Write($"{linesOne[i][j]} ");
+                            }
+                        }
                     }
                 }
+
+                for (int k = 0; k < linesTwo.Count; k += 1)
+                {
+                    if (linesTwo[k].Count > linesOne[k].Count)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        for (int l = linesOne[k].Count-1; l < linesTwo[k].Count; l++)
+                        {
+                            Console.Write($"+{linesTwo[k][l]} ");
+                        }
+                    }
+                }
+
             }
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine(" ");
