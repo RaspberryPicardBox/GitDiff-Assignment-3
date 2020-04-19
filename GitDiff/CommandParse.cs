@@ -31,10 +31,12 @@ namespace GitDiff
                 catch (IndexOutOfRangeException)
                 {
                     UnknownCommand.unknownArgument("diff");
+                    contents = FileRead.Read("nullOne.txt", "nullTwo.txt");
                 }
                 catch (NullReferenceException)
                 {
                     UnknownCommand.errorArgument("diff");
+                    contents = FileRead.Read("nullOne.txt", "nullTwo.txt");
                 }
                 Diff.Difference(contents);
             }
