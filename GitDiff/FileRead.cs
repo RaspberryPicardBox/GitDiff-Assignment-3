@@ -8,20 +8,20 @@ namespace GitDiff
     {
         public static List<List<string[]>> Read(string fileOne, string fileTwo)
         {
-            if (fileOne.Contains(".txt") && fileTwo.Contains(".txt"))
+            if (fileOne.Contains(".txt") && fileTwo.Contains(".txt")) //Check to make sure both are text files
             {
-                List<string[]> contentsOne = new List<string[]>();
+                List<string[]> contentsOne = new List<string[]>(); //Initialise new lists
                 List<string[]> contentsTwo = new List<string[]>();
-                List<List<string[]>> contentsAll = new List<List<string[]>>();
-                try
+                List<List<string[]>> contentsAll = new List<List<string[]>>(); //And one for the contents of both combined
+                try //Attempt to read the content of the file
                 {
-                    string[] contentsFileOne = System.IO.File.ReadAllLines($@"../../../../Files/{fileOne}");
+                    string[] contentsFileOne = System.IO.File.ReadAllLines($@"../../../../Files/{fileOne}"); //Only looking at this particular path
                     contentsOne.Add(contentsFileOne);
                 }
-                catch (Exception)
+                catch (Exception) //And catch the exception if something is wrong, such as the file not existing or being corrupt
                 {
                     Output.writeOut($"File name {fileOne} is invalid.");
-                    return null;
+                    return null; //Return something to satisfy the return state
                 }
                 try
                 {
@@ -35,7 +35,7 @@ namespace GitDiff
                 }
                 contentsAll.Add(contentsOne);
                 contentsAll.Add(contentsTwo);
-                return contentsAll;
+                return contentsAll; //Contents all is returned with two lists of the file's contents
             }
             else
             {

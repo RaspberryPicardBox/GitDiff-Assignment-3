@@ -22,7 +22,7 @@ namespace GitDiff
             }
             else
             {
-                UnknownCommand.unknownCommand(command);
+                UnknownCommand.unknownCommand(command); //If the command isn't listed in the help command, raise an error.
             }
         }
     }

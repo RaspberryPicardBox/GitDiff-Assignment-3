@@ -8,9 +8,9 @@ namespace GitDiff
     {
         public string In()
         {
-            Console.Write(">: [Input] ");
+            Console.Write(">: [Input] "); //Make the output seem console clearer by showing when input is necessary
             string UserInput = Console.ReadLine();
-            return UserInput.ToLower();
+            return UserInput.ToLower(); //Make all input lower-case to remove the need for case sensitivity
         }
     }
 }
