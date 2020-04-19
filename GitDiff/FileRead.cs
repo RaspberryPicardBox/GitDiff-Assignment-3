@@ -20,7 +20,7 @@ namespace GitDiff
                 }
                 catch (Exception)
                 {
-                    Console.WriteLine($"File name {fileOne} is invalid.");
+                    Output.writeOut($"File name {fileOne} is invalid.");
                     return null;
                 }
                 try
@@ -30,7 +30,7 @@ namespace GitDiff
                 }
                 catch (Exception)
                 {
-                    Console.WriteLine($"File name {fileTwo} is invalid.");
+                    Output.writeOut($"File name {fileTwo} is invalid.");
                     return null;
                 }
                 contentsAll.Add(contentsOne);
@@ -39,7 +39,7 @@ namespace GitDiff
             }
             else
             {
-                Console.WriteLine($"File names don't contain .txt...");
+                Output.writeOut($"File names don't contain .txt...");
                 return null;
             }
             

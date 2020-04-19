@@ -59,7 +59,7 @@ namespace GitDiff
             }
             else if (words[0] == "quit")
             {
-                Console.WriteLine("Exiting the console...");
+                Output.writeOut("Exiting the console...");
                 Environment.Exit(0);
             }
             else if (words[0] == "" || words[0] == " ")

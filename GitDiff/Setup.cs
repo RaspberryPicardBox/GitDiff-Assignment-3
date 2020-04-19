@@ -8,8 +8,10 @@ namespace GitDiff
     {
         public static void Start()
         {
-            Console.WriteLine("----- C# Git Diff Implementation -----");
-            Console.WriteLine("Input 'help' for directions on how to use.");
+            var logLine = new Logger.logFile();
+            logLine.logCreate();
+            Output.writeOut("----- C# Git Diff Implementation -----");
+            Output.writeOut("Input 'help' for directions on how to use.");
         }
 
     }

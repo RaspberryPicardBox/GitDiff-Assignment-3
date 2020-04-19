@@ -9,11 +9,13 @@ namespace GitDiff
         {
             UserInput input = new UserInput();
             CommandParse commandParse = new CommandParse();
+            var logLine = new Logger.logFile();
 
             Setup.Start();
             while (true)
             {
                 string command = input.In();
+                logLine.log(command, "Input");
                 commandParse.parse(command);
             }
         }

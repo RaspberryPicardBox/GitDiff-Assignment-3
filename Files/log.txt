@@ -1,0 +1,4 @@
+Output: ----- C# Git Diff Implementation -----
+Output: Input 'help' for directions on how to use.
+Input: quit
+Output: Exiting the console...

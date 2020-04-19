@@ -62,27 +62,27 @@ namespace GitDiff
                     maxLines = linesOne.Count;
                 }
 
-                Console.WriteLine("\nFile One:");
+                Output.writeOut("\nFile One:");
 
                 for (int i = 0; i < linesOne.Count; i += 1)
                 {
                     for (int j = 0; j < linesOne[i].Count; j += 1)
                     {
-                        Console.Write($"{linesOne[i][j]} ");
+                        Output.writeOut($"{linesOne[i][j]} ");
                     }
                 }
 
-                Console.WriteLine("\n\nFile Two:");
+                Output.writeOut("\n\nFile Two:");
 
                 for (int i = 0; i < linesTwo.Count; i += 1)
                 {
                     for (int j = 0; j < linesTwo[i].Count; j += 1)
                     {
-                        Console.Write($"{linesTwo[i][j]} ");
+                        Output.writeOut($"{linesTwo[i][j]} ");
                     }
                 }
 
-                Console.WriteLine("\n\n----------\n");
+                Output.writeOut("\n\n----------\n");
 
                 for (int i = 0; i < maxLines; i += 1)
                 {
@@ -112,40 +112,40 @@ namespace GitDiff
                         if (linesOne[i][j] == linesTwo[i][j])
                         {
                             Console.ForegroundColor = ConsoleColor.White;
-                            Console.Write($"{linesOne[i][j]} ");
+                            Output.Write($"{linesOne[i][j]} ");
                         }
                         else if (linesTwo[i][j] == "")
                         {
                             Console.ForegroundColor = ConsoleColor.White;
-                            Console.Write($"{linesOne[i][j]} ");
+                            Output.Write($"{linesOne[i][j]} ");
                         }
                         else if (linesOne[i][j] == "")
                         {
                             Console.ForegroundColor = ConsoleColor.Green;
-                            Console.Write($"{linesTwo[i][j]} ");
+                            Output.Write($"{linesTwo[i][j]} ");
                         }
                         else if (linesOne[i][j] != linesTwo[i][j])
                         {
                             if (differencesTwo.Contains(linesTwo[i][j]))
                             {
                                 Console.ForegroundColor = ConsoleColor.Green;
-                                Console.Write($"{linesTwo[i][j]} ");
+                                Output.writeOut($"{linesTwo[i][j]} ");
                                 if (linesTwo[i][j + 1] != linesOne[i][j])
                                 {
                                     Console.ForegroundColor = ConsoleColor.Red;
-                                    Console.Write($"{linesOne[i][j]} ");
+                                    Output.Write($"{linesOne[i][j]} ");
                                 }
                             }
                             else if (differencesOne.Contains(linesOne[i][j]))
                             {
                                 Console.ForegroundColor = ConsoleColor.Red;
-                                Console.Write($"{linesOne[i][j]} ");
+                                Output.Write($"{linesOne[i][j]} ");
                             }
                         }
                     }
                 }
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine(" ");
+                Output.writeOut(" ");
             }  
         }
     }
