@@ -24,6 +24,7 @@ namespace GitDiff
 
             List<List<string>> linesOne = new List<List<string>>();
             List<List<string>> linesTwo = new List<List<string>>();
+            int maxLines = 0;
 
             foreach(string[] list in One)
             {
@@ -42,7 +43,22 @@ namespace GitDiff
                 }
             }
 
-            Console.WriteLine("File One:");
+            if (linesOne.Count > linesTwo.Count)
+            {
+                maxLines = linesOne.Count;
+                linesTwo.Add(new List<string>());
+            }
+            else if (linesTwo.Count > linesOne.Count)
+            {
+                maxLines = linesTwo.Count;
+                linesOne.Add(new List<string>());
+            }
+            else
+            {
+                maxLines = linesOne.Count;
+            }
+
+            Console.WriteLine("\nFile One:");
 
             for (int i = 0; i < linesOne.Count; i += 1)
             {
@@ -64,64 +80,67 @@ namespace GitDiff
 
             Console.WriteLine("\n\n----------\n");
 
-            for (int i = 0; i < linesOne.Count; i += 1)
+
+
+            for (int i = 0; i < maxLines; i += 1)
             {
                 IEnumerable<string> differencesTwo = linesTwo[i].Except(linesOne[i]);
                 IEnumerable<string> differencesOne = linesOne[i].Except(linesTwo[i]);
 
-                Console.WriteLine($"Differences One: \n \n");
-                foreach (string word in differencesOne)
+                if (linesOne[i].Count < linesTwo[i].Count)
                 {
-                    Console.WriteLine(word);
+                    for (int q = linesOne[i].Count; q < linesTwo[i].Count; q++)
+                    {
+                        linesOne[i].Add("");
+                    }
                 }
-                Console.WriteLine($"\n\nDifferences Two: \n \n");
-                foreach (string word in differencesTwo)
+                else if (linesTwo[i].Count < linesOne[i].Count)
                 {
-                    Console.WriteLine(word);
+                    for (int q = linesTwo[i].Count; q < linesOne[i].Count; q++)
+                    {
+                        linesTwo[i].Add("");
+                    }
                 }
 
+                linesOne[i].Add("");
+                linesTwo[i].Add("");
+                
                 for (int j = 0; j < linesOne[i].Count; j += 1)
                 {
-                    if (differencesOne.Contains(linesOne[i][j]))
+                    if (linesOne[i][j] == linesTwo[i][j])
                     {
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.Write($"-{linesOne[i][j]} ");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.Write($"{linesOne[i][j]} ");
                     }
-                    else if (differencesTwo.Contains(linesOne[i][j]))
+                    else if (linesTwo[i][j] == "")
+                    {
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.Write($"{linesOne[i][j]} ");
+                    }
+                    else if (linesOne[i][j] == "")
                     {
                         Console.ForegroundColor = ConsoleColor.Green;
-                        Console.Write($"+{linesOne[i][j]} ");
+                        Console.Write($"{linesTwo[i][j]} ");
                     }
-                    else
+                    else if (linesOne[i][j] != linesTwo[i][j])
                     {
-                        if (i < linesTwo[i][j].Count())
+                        if (differencesTwo.Contains(linesTwo[i][j]))
                         {
-                            if (linesOne[i][j] != linesTwo[i][j])
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.Write($"{linesTwo[i][j]} ");
+                            if (linesTwo[i][j+1] != linesOne[i][j])
                             {
                                 Console.ForegroundColor = ConsoleColor.Red;
-                                Console.Write($"-{linesOne[i][j]} ");
-                            }
-                            else
-                            {
-                                Console.ForegroundColor = ConsoleColor.White;
                                 Console.Write($"{linesOne[i][j]} ");
                             }
                         }
-                    }
-                }
-
-                for (int k = 0; k < linesTwo.Count; k += 1)
-                {
-                    if (linesTwo[k].Count > linesOne[k].Count)
-                    {
-                        Console.ForegroundColor = ConsoleColor.Green;
-                        for (int l = linesOne[k].Count-1; l < linesTwo[k].Count; l++)
+                        else if (differencesOne.Contains(linesOne[i][j]))
                         {
-                            Console.Write($"+{linesTwo[k][l]} ");
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.Write($"{linesOne[i][j]} ");
                         }
                     }
                 }
-
             }
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine(" ");
