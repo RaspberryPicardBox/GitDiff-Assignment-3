@@ -1,6 +1,7 @@
 Output: ----- C# Git Diff Implementation -----
 Output: Input 'help' for directions on how to use.
-Input: debug
+Output: File name noFile.txt is invalid.
+Output: File name notA.txt is invalid.
 Output: 
 File One:
 Output: This 

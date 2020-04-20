@@ -5,7 +5,7 @@ using System.Text;
 
 namespace GitDiff
 {
-    class Diff
+    public class Diff
     {
         public static void Difference(List<List<string[]>> fileContents) //Take the list of lines of text (from both files)
         {

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace GitDiff
 {
-    class FileRead
+    public class FileRead
     {
         public static List<List<string[]>> Read(string fileOne, string fileTwo)
         {

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace GitDiff
 {
-    class CommandParse
+    public class CommandParse
     {
         public void parse(string userInput) //Take the user's input as an argument
         {
