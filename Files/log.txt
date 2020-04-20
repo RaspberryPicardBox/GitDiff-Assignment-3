@@ -1,4 +1,39 @@
 Output: ----- C# Git Diff Implementation -----
 Output: Input 'help' for directions on how to use.
-Input: quit
-Output: Exiting the console...
+Input: debug
+Output: 
+File One:
+Output: This 
+Output: is 
+Output: a 
+Output: file. 
+Output: 
+
+File Two:
+Output: This 
+Output: is 
+Output: a 
+Output: different 
+Output: file. 
+Output: With 
+Output: two 
+Output: lines! 
+Output: 
+
+----------
+
+Output: 
+>: [Output] Line 0 
+Output: This 
+Output: is 
+Output: a 
+Output: different 
+Output: file. 
+Output:  
+Output: 
+>: [Output] Line 1 
+Output: With 
+Output: two 
+Output: lines! 
+Output:  
+Output:  

@@ -68,7 +68,7 @@ namespace GitDiff
                 {
                     for (int j = 0; j < linesOne[i].Count; j += 1)
                     {
-                        Output.writeOut($"{linesOne[i][j]} "); //Write out the content of fileOne
+                        Output.Write($"{linesOne[i][j]} "); //Write out the content of fileOne
                     }
                 }
 
@@ -78,7 +78,7 @@ namespace GitDiff
                 {
                     for (int j = 0; j < linesTwo[i].Count; j += 1)
                     {
-                        Output.writeOut($"{linesTwo[i][j]} "); //And fileTwo
+                        Output.Write($"{linesTwo[i][j]} "); //And fileTwo
                     }
                 }
 
@@ -86,6 +86,7 @@ namespace GitDiff
 
                 for (int i = 0; i < maxLines; i += 1) //For every line in the files
                 {
+                    Output.Write($"\n>: [Output] Line {i} "); //Write the line number
                     IEnumerable<string> differencesTwo = linesTwo[i].Except(linesOne[i]); //Find the differences between the lines in the two text files
                     IEnumerable<string> differencesOne = linesOne[i].Except(linesTwo[i]);
 
